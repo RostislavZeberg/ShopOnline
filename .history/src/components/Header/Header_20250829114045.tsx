@@ -27,8 +27,8 @@ export const Header: React.FC = () => {
               src="/logo.svg"
               alt="Логотип"
               className="logo"
-              width={230}
-              height={32}
+              width={24}
+              height={24}
             />
           </Link>
           <BtnBurger />

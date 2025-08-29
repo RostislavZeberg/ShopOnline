@@ -74,7 +74,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
 
   if (formData.email === existingEmail && showForm) {
     return (
-      <div className={styles['btn-account']}>
+      <div className="">
         <p className="">Аккаунт с E-mail {existingEmail} существует</p>
         <button 
         onClick={handlerShowForm}

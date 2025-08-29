@@ -23,8 +23,8 @@ export const CurrencySelection = () => {
           className={styles.show__icon}
           src={`/icon_country-${selectedCurrency.code}.svg`}
           alt="Флаг страны"
-          width={24}
-          height={24}
+          width={24}  
+          height={24} 
         />
         <span className={styles.show__code}>{selectedCurrency.code}</span>
       </div>
@@ -43,13 +43,7 @@ export const CurrencySelection = () => {
               key={currency.code}
             >
               <div className={styles.item__block}>
-                <Image
-                  className={styles.item__icon}
-                  src={`/icon_country-${currency.code}.svg`}
-                  alt="Флаг страны"
-                  width={24}
-                  height={24}
-                />
+                <Image className={styles.item__icon} src={`/icon_country-${currency.code}.svg`} alt="Флаг страны" />
                 <span className={styles.item__code}>{currency.code}</span>
                 <span className={styles.item__name}>{currency.name}</span>
               </div>
