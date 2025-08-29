@@ -1,0 +1,28 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  color: #0070f3;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-size: 16px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}

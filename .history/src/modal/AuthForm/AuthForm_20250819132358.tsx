@@ -1,0 +1,40 @@
+"use client"
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import { RootState } from "@/store/store";
+import { toggleEnterLogIn } from "@/store/slices/logInSlice";
+import { useAppDispatch } from "@/store/hooks";
+import { toggleAuthForm } from "@/store/slices/authFormSlice";
+import { toggleBackground } from "@/store/slices/backgroundSlice";
+import { LoginForm } from "./LoginForm";
+import { RegisterForm } from "./RegisterForm";
+import styles from "./autorisieren.module.scss"
+
+export const AuthForm = () => {
+  const dispatch = useAppDispatch();
+  const isAuthForm = useSelector((state: RootState) => state.authFormSlice.isAuthForm);
+  const [authType, setAuthType] = useState(false);
+
+  if (!isAuthForm) return null;
+
+  return (
+    <div className={styles.autorisieren}>
+      <button
+        type="button"
+        className={`btn-closed btn-reset ${styles['btn-closed--autorisieren']}`}
+        onClick={() => {
+          dispatch(toggleAuthForm())
+          dispatch(toggleBackground())
+        }}
+        aria-label="Закрыть форму">
+      </button>
+      <div className={styles['logo-modal']}></div>
+      {authType ? (
+        <LoginForm setAuthType={setAuthType} />
+      ) : (
+        <RegisterForm setAuthType={setAuthType} />
+      )}
+    </div>
+  )
+}

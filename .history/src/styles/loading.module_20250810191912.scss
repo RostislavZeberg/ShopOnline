@@ -1,0 +1,49 @@
+.skeletonText, 
+.skeletonImage, 
+.skeletonTitle, 
+.skeletonMeta, 
+.skeletonDescription, 
+.skeletonPrice {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonImage {
+  height: 500px;
+  width: 100%;
+}
+
+.skeletonTitle {
+  height: 40px;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.skeletonMeta {
+  height: 20px;
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.skeletonDescription {
+  height: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.skeletonPrice {
+  height: 40px;
+  width: 120px;
+  margin: 30px 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

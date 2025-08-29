@@ -1,0 +1,358 @@
+@use 'mixins';
+
+.header {
+  position: fixed;
+  width: -webkit-fill-available;
+  padding-bottom: 16px;
+  padding-top: 8px;
+  height: 120px;
+  background: linear-gradient(97.26deg,
+      #ed3cca 0.49%,
+      #df34d2 14.88%,
+      #d02bd9 29.27%,
+      #bf22e1 43.14%,
+      #ae1ae8 57.02%,
+      #9a10f0 70.89%,
+      #8306f7 84.76%,
+      #7c1af8 99.15%),
+    linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+  z-index: 3;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+
+    &__item {
+      position: relative;
+      color: rgba(255, 255, 255, 0.6);
+      border-color: initial;
+      background-color: transparent;
+      min-height: 20px;
+      font-size: 14px;
+      line-height: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .city {
+      vertical-align: baseline;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 275px;
+      padding-left: 20px;
+      display: inline-block;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        mask-position: 50%;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-image: url(/icon_city.svg);
+        opacity: 0.6;
+        background-color: #fff;
+        transition: opacity 0.3s;
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 0;
+      }
+
+      &:hover {
+        z-index: 1;
+        color: #fff;
+        backdrop-filter: blur(100px);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        margin-left: -4px;
+        padding: 0 4px 0 24px;
+        position: relative;
+
+        &::before {
+          opacity: 1;
+          left: 4px;
+        }
+      }
+    }
+
+    .country {
+      position: relative;
+      border-radius: 8px;
+      padding: 0 4px;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.2);
+
+      .show {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #fff;
+        cursor: pointer;
+        border-color: initial;
+        background-color: transparent;
+        min-height: 20px;
+        font-size: 14px;
+        line-height: 20px;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &__icon {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      .list {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: fit-content;
+        min-width: max-content;
+        padding: 12px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        z-index: 3;
+
+        &__title {
+          font-variation-settings: "wght" 650;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 24px;
+        }
+
+        .item {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          padding: 8px;
+          cursor: pointer;
+
+          &__block {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 10px;
+          }
+
+          &__icon {
+            width: 22px;
+            height: 22px;
+          }
+
+          &__code {
+            color: #868695;
+          }
+
+          &__name {
+            white-space: nowrap;
+            color: #242424;
+            font-size: 16px;
+            line-height: 22px;
+          }
+
+          &__mark {
+            border-bottom: 2px solid #242424;
+            border-left: 2px solid #242424;
+            width: 12px;
+            height: 7px;
+            display: block;
+            top: 14px;
+            right: 10px;
+            transform: rotate(-45deg);
+          }
+
+          &__mark--none {
+            opacity: 0;
+          }
+
+          &__active,
+          &:hover {
+            background-color: #f6f6f9;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    .logo {
+      max-width: 100%;
+      max-height: 100%;
+      cursor: pointer;
+    }
+
+    .search {
+      position: relative;
+      width: 100%;
+
+      &__input {
+        appearance: none;
+        caret-color: #a73afd;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: #fff;
+        outline: none;
+        border: none;
+        border-radius: 12px;
+        width: 100%;
+        margin: 0;
+        padding: 17px 100px 17px 20px;
+        font-size: 16px;
+        line-height: 22px;
+        overflow: hidden;
+        color: #242424;
+      }
+
+      &__clean,
+      &__icon {
+        @include mixins.absoluteCenterVertical;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+      }
+
+      &__clean {
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        font-size: 0;
+        line-height: 1;
+      }
+
+      &__clean::before,
+      &__clean::after {
+        content: "";
+        background-color: #a9a8b0;
+        border-radius: 1px;
+        transition: background .3s;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateZ(0) rotate(45deg);
+        transition: background-color 0.3s ease;
+      }
+
+      &__clean::before {
+        width: 2px;
+        height: 18px;
+      }
+
+      &__clean::after {
+        width: 18px;
+        height: 2px;
+      }
+
+      &__clean:hover::before,
+      &__clean:hover::after {
+        background-color: #242424;
+      }
+
+      &__icon {
+        right: 5px;
+      }
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+
+      .link {
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 20px;
+        text-decoration: none;
+        transition: color 0.3s, opacity 0.3s;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+
+        &:hover {
+          color: #fff;
+          opacity: 0.9;
+        }
+
+        &__icon {
+          background-position: 50%;
+          background-repeat: no-repeat;
+          width: 24px;
+          height: 24px;
+          display: block;
+          position: relative;
+          transition: transform 0.2s;
+
+          &:before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: currentColor;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: background-color 0.3s;
+          }
+        }
+
+        &:hover &__icon {
+          transform: scale(1.05);
+        }
+
+        &__icon--favorites:before {
+          -webkit-mask: url(/icon_favorites.svg) no-repeat center / contain;
+          mask: url(/icon_favorites.svg) no-repeat center / contain;
+        }
+
+        &__icon--orders:before {
+          -webkit-mask: url(/icon_orders.svg) no-repeat center / contain;
+          mask: url(/icon_orders.svg) no-repeat center / contain;
+        }
+
+        &__icon--log-in:before {
+          -webkit-mask: url(/icon_log-in.svg) no-repeat center / contain;
+          mask: url(/icon_log-in.svg) no-repeat center / contain;
+        }
+
+        &__icon--basket:before {
+          -webkit-mask: url(/icon_basket.svg) no-repeat center / 24px;
+          mask: url(/icon_basket.svg) no-repeat center / 24px;
+        }
+      }
+    }
+
+
+  }
+
+  .search:hover .search__icon path,
+  .search__input:focus+.search__icon path {
+    stroke: #a73afd;
+    transition: stroke 0.3s ease;
+  }
+
+  .search-detailed {
+    @include mixins.absoluteCenterHorizontal;
+    display: flex;
+    flex-direction: column;
+    bottom: -81px;
+    padding: 16px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #bf22e1;
+  }
+}

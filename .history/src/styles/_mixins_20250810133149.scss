@@ -1,0 +1,39 @@
+@mixin absoluteCenter {
+  position: absolute;
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin absoluteCenterHorizontal {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+}
+
+@mixin absoluteCenterVertical {
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 0;
+}
+
+@mixin fixedCenter {
+  position: fixed;
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  top: 50%;
+  right: 0;
+  bottom: 50%;
+  left: 0;
+}

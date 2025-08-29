@@ -1,0 +1,2 @@
+export { SearchProductDetailed } from "../SearchProductDetailed"
+

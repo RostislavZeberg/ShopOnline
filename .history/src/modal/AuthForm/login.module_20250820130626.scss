@@ -1,0 +1,12 @@
+  .loginForm {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .loginForm {
+    transform: rotateY(180deg);
+  }

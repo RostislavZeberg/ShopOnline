@@ -1,0 +1,32 @@
+.header {
+  margin-bottom: 30px;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 45px;
+  padding-top: 140px;
+  padding-bottom: 30px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  color: #0070f3;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-size: 16px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}

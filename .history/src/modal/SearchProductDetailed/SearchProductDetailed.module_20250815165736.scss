@@ -1,0 +1,83 @@
+  @use '../../styles/mixins';
+
+  .search-detailed,
+  .search-detailed--active {
+    @include mixins.absoluteCenterHorizontal;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    width: fit-content;
+    height: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    opacity: 0;
+    background-color: #8fad96;
+    transition: height 0.3s ease-in-out;
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    &__label {
+      margin-bottom: 7px;
+    }
+
+    &__title--label {
+      display: block;
+      margin-right: 7px;
+      margin-bottom: 7px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    &__input,
+    &__input--price {
+      outline: none;
+      border: none;
+      border-radius: 5px;
+    }
+
+    &__input {
+      width: 100%;
+      padding: 5px;
+    }
+
+    &__input--price {
+      display: flex;
+      padding: 5px;
+    }
+
+    &__input:hover,
+    &__input--price:hover {
+      background-color: #e4e3ff;
+    }
+
+    .btn-closed--search-detailed {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+
+    &__btn {
+      display: flex;
+      gap: 20px;
+    }
+
+    .selected {
+      border: 2px solid #000;
+      transform: scale(1.1);
+    }
+  }
+
+  .search-detailed--active {
+    height: fit-content;
+    opacity: 1;
+  }

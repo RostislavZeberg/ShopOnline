@@ -1,0 +1,28 @@
+.category {
+  padding: 140px 0;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 45px;
+  padding-bottom: 30px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.backButton {
+  display: block;
+  align-items: center;
+  text-decoration: none;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 20px;
+  color: #fff;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}

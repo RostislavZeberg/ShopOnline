@@ -1,0 +1,19 @@
+.footer {
+  padding: 40px 0 72px;
+  background-color: rgba(211, 212, 221, .24);
+  color: #242424;
+
+  &__social {
+    gap: 8px;
+    display: flex;
+  }
+
+  &__social-icon {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    position: relative;
+  }
+}

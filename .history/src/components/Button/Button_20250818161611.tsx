@@ -1,0 +1,32 @@
+import { FC, HTMLAttributes } from "react";
+
+import { Loader } from "../Loader/Loader";
+import styles from "./button.module.scss";
+
+interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  kind?: "primary" | "secondary";
+  type?: "submit" | "reset" | "button";
+}
+
+export const Button: FC<IButtonProps> = ({
+  isLoading,
+  isDisabled = isLoading,
+  children,
+  kind = "primary",
+  type,
+  ...props
+}) => {
+  return (
+    <button
+      disabled={isDisabled}
+      type={type}
+      className={styles.bottom}
+      data-kind={kind}
+      {...props}
+    >
+      {isLoading ? <Loader /> : children}
+    </button>
+  );
+};

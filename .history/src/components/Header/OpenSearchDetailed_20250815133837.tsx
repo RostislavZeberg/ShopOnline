@@ -1,0 +1,15 @@
+"use client"
+import { useSelector } from 'react-redux';
+
+import { SearchProductDetailed } from '@/modal/SearchProductDetailed/SearchProductDetailed';
+import { RootState } from '@/store/store';
+
+export const OpenSearchDetailed = () => {
+  const isOpenSearchDetailed = useSelector((state: RootState) => state.burgerSlice.isOpenSearchDetailed);
+
+  return (
+    <>
+      {isOpenSearchDetailed && <SearchProductDetailed />}
+    </>
+  )
+}

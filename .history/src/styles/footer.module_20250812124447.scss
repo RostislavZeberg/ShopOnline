@@ -1,0 +1,33 @@
+.footer {
+  padding: 40px 0 72px;
+  background-color: rgba(211, 212, 221, .24);
+  color: #242424;
+
+  &__social {
+    gap: 8px;
+    display: flex;
+  }
+
+  &__social-icon {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    position: relative;
+  }
+
+  &__social-icon--vk {
+    -webkit-mask-position: 50%;
+    mask-position: 50%;
+    -webkit-mask-size: auto;
+    mask-size: auto;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-image: var(--icon);
+    -webkit-mask-image: var(--icon);
+    mask-image: var(--icon);
+    background-color: #868695;
+    transition: background-color .3s;
+  }
+}

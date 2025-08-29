@@ -1,0 +1,16 @@
+  .search-detailed {
+    @include mixins.absoluteCenterHorizontal;
+    display: flex;
+    flex-direction: column;
+    bottom: -81px;
+    padding: 16px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #bf22e1;
+
+    .btn-closed--search-detailed {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+  }

@@ -1,0 +1,8 @@
+@use '../../styles/mixins';
+
+.autorisieren {
+  @include mixins.absoluteCenter;
+  z-index: 25;
+  padding: 10px;
+  background-color: red;
+}

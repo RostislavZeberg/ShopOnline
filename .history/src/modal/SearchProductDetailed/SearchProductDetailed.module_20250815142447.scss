@@ -1,0 +1,26 @@
+  @use '../../styles/mixins';
+
+  .search-detailed,
+  .search-detailed--active {
+    @include mixins.absoluteCenterHorizontal;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    // opacity: 0;
+    background-color: #bf22e1;
+    transition: max-height 10s ease-in-out, opacity 0.3s ease-in-out;
+
+    .btn-closed--search-detailed {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+  }
+
+  .search-detailed--active {
+    max-height: fit-content;
+    opacity: 1;
+  }

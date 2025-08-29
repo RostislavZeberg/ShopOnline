@@ -1,0 +1,60 @@
+.cart {
+  padding-top: 140px;
+
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+  }
+
+}
+
+.icon {
+  font-size: 60px;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+
+.message {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.continueShopping,
+.viewOrders {
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.continueShopping {
+  background-color: #007bff;
+  color: white;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+.viewOrders {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+
+  &:hover {
+    background-color: #e9ecef;
+  }
+}

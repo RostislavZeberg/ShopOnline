@@ -1,0 +1,31 @@
+"use client"
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import { RootState } from "@/store/store";
+import { RegisterForm } from "./RegisterForm";
+import { toggleEnterLogIn } from "@/store/slices/logInSlice";
+import styles from "./autorisieren.module.scss"
+import { useAppDispatch } from "@/store/hooks";
+
+export const AuthForm = () => {
+  const isAuthForm = useSelector((state: RootState) => state.authFormSlice.isAuthForm);
+  const dispatch = useAppDispatch();
+  const [isAutorisieren, setIsAutorisieren] = useState(false)
+  const isEnterLogIn = useSelector((state: RootState) => state.logInSlice.isEnterLogIn);
+
+  const handleAuthForm = () => {
+    dispatch(toggleEnterLogIn())
+  }
+
+  if (!isAuthForm) return null;
+
+  return (
+    <div className={styles.autorisieren}>
+      <RegisterForm setIsAutorisieren={setIsAutorisieren} />
+      <button onClick={handleAuthForm} type="submit" className={styles["autorisieren__btn"]}>
+        BUTTON
+      </button>
+    </div>
+  )
+}

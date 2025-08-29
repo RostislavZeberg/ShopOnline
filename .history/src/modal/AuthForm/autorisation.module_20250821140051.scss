@@ -1,0 +1,131 @@
+@use '../../styles/mixins';
+
+.autorisation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 24px;
+  padding: 64px 40px;
+  width: fit-content;
+  z-index: 25;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+
+    &__item {
+      position: relative;
+      width: 100%;
+    }
+
+    &__input {
+      width: 100%;
+      border: none;
+      padding: 16px 10px 16px 16px;
+      color: #868695;
+      cursor: pointer;
+    }
+
+    &__btn-block {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 16px;
+    }
+  }
+
+  .btn-closed--autorisation {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .logo-modal {
+    width: 180px;
+    height: 42px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url(/logo.svg);
+    background-color: rgb(167, 58, 253);
+    box-shadow: 0 0 11px 9px rgb(167, 58, 253);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .btn-change {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: #000;
+  }
+
+  &__button {
+    text-align: center;
+    border-color: initial;
+    border-radius: 28px;
+    width: 340px;
+    height: 56px;
+    background-color: #6a5dc2;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: #fff;
+  }
+
+  &__button:hover {
+    color: var(--primary-hover);
+  }
+
+  input::-webkit-input-placeholder {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .vestibule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .vestibule-none {
+    display: none;
+  }
+
+  .vestibule__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 133%;
+    color: #000;
+  }
+
+  .vestibule__descr {
+    max-width: 300px;
+    text-align: center;
+  }
+}
+
+.btn-closed--form {
+  top: 0;
+  right: 0;
+}

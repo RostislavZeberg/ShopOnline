@@ -1,0 +1,43 @@
+  @use '../../styles/mixins';
+
+  .search-detailed {
+    @include mixins.absoluteCenterHorizontal;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    width: fit-content;
+    height: 0;
+    overflow: hidden;
+    background-color: #bf22e1;
+    animation: expandHeight 2s ease-in-out forwards;
+
+    .btn-closed--search-detailed {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+  }
+
+  @keyframes expandHeight {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: fit-content;
+    }
+  }
+
+  .search-detailed.hide {
+    animation: collapseHeight 2s ease-in-out forwards;
+  }
+
+  @keyframes collapseHeight {
+    0% {
+      height: fit-content;
+    }
+
+    100% {
+      height: 0;
+    }
+  }
