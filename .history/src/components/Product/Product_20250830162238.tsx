@@ -43,7 +43,7 @@ export const Product: FC<ProductProps> = ({ product, isPriority, isLoading }) =>
               src={product.image.file.url}
               alt={product.title}
               className={styles.img}
-              loading={isLoading ? "lazy" : undefined}
+              loading={isLoading && "lazy"}
               priority={isPriority}
               width={300}
               height={300}

@@ -34,8 +34,7 @@ export const ProductsList = () => {
         <Product
           key={product.id}
           product={product}
-          isPriority={index < 10}
-          isLoading={index > 10}
+          isPriority={index < 4}
         />
       ))}
     </ul>

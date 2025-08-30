@@ -14,10 +14,9 @@ import styles from "./product.module.scss";
 interface ProductProps {
   product: IProductTotal;
   isPriority: boolean;
-  isLoading: boolean;
 }
 
-export const Product: FC<ProductProps> = ({ product, isPriority, isLoading }) => {
+export const Product: FC<ProductProps> = ({ product, isPriority }) => {
   const dispatch = useAppDispatch();
   const { checkIsFavorite } = useProductData();
   const currentCurrency = useAppSelector((state) => state.currencySlice.currentCurrency);
@@ -43,8 +42,8 @@ export const Product: FC<ProductProps> = ({ product, isPriority, isLoading }) =>
               src={product.image.file.url}
               alt={product.title}
               className={styles.img}
-              loading={isLoading ? "lazy" : undefined}
-              priority={isPriority}
+              loading="lazy"
+              // priority
               width={300}
               height={300}
             />
