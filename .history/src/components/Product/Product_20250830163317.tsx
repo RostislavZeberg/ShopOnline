@@ -36,6 +36,7 @@ export const Product: FC<ProductProps> = ({ product, isPriority, isLoading }) =>
 
   return (
     <li className={styles.item}>
+      <div className={styles['item__content']}></div>
       <div className={styles.item__link}>
         <Link href={`/product/${product.id}`} className={styles.item__link}>
           <div className={styles.item__img}>
@@ -72,7 +73,7 @@ export const Product: FC<ProductProps> = ({ product, isPriority, isLoading }) =>
           </div>
         </Link>
 
-        <button onClick={handleToggleCart} className="btn btn-reset" aria-label="Заказать">
+        <button onClick={handleToggleCart} className="btn-order btn btn-reset" aria-label="Заказать">
           <span className="btn-order__icon" />
           <span>Заказать</span>
         </button>

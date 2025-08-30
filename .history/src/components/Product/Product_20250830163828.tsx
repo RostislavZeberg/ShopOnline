@@ -36,6 +36,7 @@ export const Product: FC<ProductProps> = ({ product, isPriority, isLoading }) =>
 
   return (
     <li className={styles.item}>
+      <div className={styles['item__content']}></div>
       <div className={styles.item__link}>
         <Link href={`/product/${product.id}`} className={styles.item__link}>
           <div className={styles.item__img}>
