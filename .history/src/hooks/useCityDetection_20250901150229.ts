@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { getCityFromCoordinates } from '@/utils/getCityFromCoordinates';
 
 export const useCityDetection = (defaultCity = 'Москва') => {
@@ -29,15 +30,15 @@ export const useCityDetection = (defaultCity = 'Москва') => {
       setCoordinates([longitude, latitude]);
     } catch (err) {
       console.error('Ошибка геолокации:', err);
+      let errorMessage = 'Не удалось определить местоположение';
 
       if (err instanceof Error) {
-        setError(err.message);
+        errorMessage = err.message;
       } else if (typeof err === 'string') {
-        setError(err);
-      } else {
-        setError('Не удалось определить местоположение');
+        errorMessage = err;
       }
 
+      setError(errorMessage);
       setCity(defaultCity);
     } finally {
       setIsLoading(false);

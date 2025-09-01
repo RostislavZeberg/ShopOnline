@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { getCityFromCoordinates } from '@/utils/getCityFromCoordinates';
 
 export const useCityDetection = (defaultCity = 'Москва') => {
@@ -10,7 +11,7 @@ export const useCityDetection = (defaultCity = 'Москва') => {
   const detectCity = async () => {
     setIsLoading(true);
     setError(null);
-
+    
     if (!navigator.geolocation) {
       setError('Геолокация не поддерживается браузером');
       setIsLoading(false);
@@ -21,23 +22,15 @@ export const useCityDetection = (defaultCity = 'Москва') => {
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
-
+      
       const { latitude, longitude } = position.coords;
       const detectedCity = await getCityFromCoordinates(latitude, longitude, defaultCity);
-
+      
       setCity(detectedCity);
       setCoordinates([longitude, latitude]);
     } catch (err) {
       console.error('Ошибка геолокации:', err);
-
-      if (err instanceof Error) {
-        setError(err.message);
-      } else if (typeof err === 'string') {
-        setError(err);
-      } else {
-        setError('Не удалось определить местоположение');
-      }
-
+      setError(err.message || 'Не удалось определить местоположение');
       setCity(defaultCity);
     } finally {
       setIsLoading(false);

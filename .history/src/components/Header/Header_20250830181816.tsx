@@ -7,8 +7,8 @@ import { CurrencySelection } from './CurrencySelection';
 import { BtnBurger } from './BtnBurger';
 import { SearchProduct } from './SearchProduct';
 import { HeaderNav } from './HeaderNav';
-import { SearchProductDetailed } from '@/modal/SearchProductDetailed/SearchProductDetailed';
 import styles from './header.module.scss'
+import { SearchProductDetailed } from '@/modal/SearchProductDetailed/SearchProductDetailed';
 
 export const Header: React.FC = () => {
 
@@ -26,13 +26,10 @@ export const Header: React.FC = () => {
             <Image
               src="/logo.svg"
               alt="Логотип"
+              className="logo"
               priority
               width={230}
               height={32}
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
             />
           </Link>
           <BtnBurger />

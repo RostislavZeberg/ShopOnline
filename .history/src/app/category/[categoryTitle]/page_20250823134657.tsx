@@ -48,23 +48,18 @@ export default function CategoryPage() {
 
   return (
     <div className={styles.category}>
-      <h1 className={styles.title}>
-        Категория: {categoryProducts[0]?.category.title || categorySlug}
-      </h1>
+        <h1 className={styles.title}>
+          Категория: {categoryProducts[0]?.category.title || categorySlug}
+        </h1>
 
       <ul className={`${styles['products-list']} list-reset`}>
-        {products.map((product, index) => (
-          <Product
-            key={product.id}
-            product={product}
-            isPriority={index < 10}
-            isLoading={index > 10}
-          />
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
         ))}
       </ul>
-      <Link href="/" className={`${styles.backButton} btn`}>
-        ← Назад к каталогу
-      </Link>
+        <Link href="/" className={`${styles.backButton} btn`}>
+          ← Назад к каталогу
+        </Link>
     </div>
   );
 }
