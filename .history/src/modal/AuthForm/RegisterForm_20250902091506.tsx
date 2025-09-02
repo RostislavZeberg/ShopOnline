@@ -26,6 +26,7 @@ const initialFormData: RegistrationFormData = {
 
 export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
   const dispatch = useAppDispatch();
+  const [showForm, setShowForm] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -44,11 +45,13 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
   });
 
   const handlerShowForm = () => {
+    setShowForm(false)
     setAuthType(true)
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setShowForm(true)
 
     if (validateForm()) {
       setUserData(formData);
@@ -69,7 +72,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
     ? userData.email
     : null;
 
-  if (formData.email === existingEmail) {
+  if (formData.email === existingEmail && showForm) {
     return (
       <div className={styles['btn-account']}>
         <p className="">Аккаунт с E-mail {existingEmail} существует</p>
@@ -78,6 +81,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
         className='btn btn-reset'>Войти в аккаунт</button>
         <button 
         onClick={() => {
+          setShowForm(false);
           setFormData(prev => ({ ...prev, email: '' }));
         }}
         className='btn btn-reset'>

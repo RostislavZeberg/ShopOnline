@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import { Header } from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
 import '@/styles/globals.scss';
+import Head from 'next/head';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,6 +33,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <Head>
+        <link
+          rel="preload"
+          href="/logo.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+      </Head>
       <body>
         <ReduxProvider> 
           <Header />

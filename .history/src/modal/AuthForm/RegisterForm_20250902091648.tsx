@@ -44,6 +44,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
   });
 
   const handlerShowForm = () => {
+    setShowForm(false)
     setAuthType(true)
   }
 

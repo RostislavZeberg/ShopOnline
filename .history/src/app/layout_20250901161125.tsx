@@ -6,11 +6,7 @@ import { Header } from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
 import '@/styles/globals.scss';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true, // Разрешаем предзагрузку шрифта
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Shop Online",
@@ -33,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <ReduxProvider> 
-          <Header />
+        <ReduxProvider> {/* Redux доступен везде */}
+          <Header /> {/* Может использовать useSelector/useDispatch */}
           <>{children}</>
-          <Footer />
+          <Footer /> {/* Может использовать useSelector/useDispatch */}
         </ReduxProvider>
       </body>
     </html>
