@@ -85,7 +85,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
         <button
           onClick={() => {
             setFormData(prev => ({ ...prev, email: '' }));
-            // setIsClient(false);
+            setIsClient(false);
           }}
           className='btn btn-reset'>
           Вернуться к регистрации

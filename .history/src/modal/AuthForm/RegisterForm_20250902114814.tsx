@@ -76,6 +76,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
   }, [isClient])
 
   if (formData.email === existingEmail && isClient) {
+    console.log(`formData.email: ${formData.email}, existingEmail: ${existingEmail}`);
     return (
       <div className={styles['btn-account']}>
         <p className="">Профиль с E-mail {existingEmail} существует</p>
@@ -85,7 +86,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
         <button
           onClick={() => {
             setFormData(prev => ({ ...prev, email: '' }));
-            // setIsClient(false);
+            setIsClient(false);
           }}
           className='btn btn-reset'>
           Вернуться к регистрации

@@ -28,7 +28,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
   const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isClient, setIsClient] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   const { formData, errors, setFieldValue, handleChange, validateForm, setFormData } = useRegisterForm<RegistrationFormData>(
     initialFormData,
@@ -74,8 +74,9 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
 
   useEffect(() => {
   }, [isClient])
-
+  
   if (formData.email === existingEmail && isClient) {
+    console.log(`formData.email: ${formData.email}, existingEmail: ${existingEmail}`);
     return (
       <div className={styles['btn-account']}>
         <p className="">Профиль с E-mail {existingEmail} существует</p>
@@ -85,7 +86,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ setAuthType }) => {
         <button
           onClick={() => {
             setFormData(prev => ({ ...prev, email: '' }));
-            // setIsClient(false);
+            setIsClient(false);
           }}
           className='btn btn-reset'>
           Вернуться к регистрации
