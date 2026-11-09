@@ -1,3 +1,4 @@
+// src\app\product\[id]\loading.tsx
 import styles from './page.module.scss';
 
 export default function Loading() {

@@ -1,3 +1,4 @@
+// src\components\FavoritesList\FavoritesList.tsx
 "use client"
 import { useAppSelector } from "@/store/hooks";
 import { Loader } from "@/components/Loader/Loader";

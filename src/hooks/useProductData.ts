@@ -1,3 +1,4 @@
+// src\hooks\useProductData.ts
 import { useCallback } from 'react';
 
 import { useAppSelector } from '../store/hooks';

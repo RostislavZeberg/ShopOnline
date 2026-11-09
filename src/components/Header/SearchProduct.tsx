@@ -1,3 +1,4 @@
+// src\components\Header\SearchProduct.tsx
 "use client"
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { useDebounce } from '@/hooks/useDebounce'

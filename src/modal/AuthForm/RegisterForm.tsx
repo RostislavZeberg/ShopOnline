@@ -1,3 +1,4 @@
+// src\modal\AuthForm\RegisterForm.tsx
 import React, { useState, type FC, useEffect } from 'react';
 import { IMaskInput } from 'react-imask';
 

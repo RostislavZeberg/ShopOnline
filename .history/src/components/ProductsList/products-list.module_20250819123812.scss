@@ -1,9 +1,0 @@
-  .products-list {
-    display: grid;
-        grid-template-columns: repeat(6, calc(16.6667% - 25px));
-        column-gap: 30px;
-    padding-top: 140px;
-    padding-bottom: 30px;
-    justify-content: space-between;
-    width: 100%;
-  }

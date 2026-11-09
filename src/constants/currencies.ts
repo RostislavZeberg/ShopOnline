@@ -1,3 +1,4 @@
+// src\constants\currencies.ts
 export const currencies = [
   { code: 'RUB', name: 'Российский рубль', symbol: '₽', rate: 1 },
   { code: 'BYN', name: 'Белорусский рубль', symbol: 'Br', rate: 0.3 },

@@ -1,3 +1,4 @@
+// src\app\layout.tsx
 import { Inter } from 'next/font/google'
 import { ReduxProvider } from './ReduxProvider';
 import type { Metadata } from 'next'

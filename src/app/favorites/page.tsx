@@ -1,4 +1,5 @@
 
+// src\app\favorites\page.tsx
 import { FavoritesList } from '@/components/FavoritesList/FavoritesList'
 import { Metadata } from 'next'
 

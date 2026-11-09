@@ -1,3 +1,4 @@
+// src\types\productsTypes.ts
 // Тип для цвета товара
 export interface IColor {
   id: number;

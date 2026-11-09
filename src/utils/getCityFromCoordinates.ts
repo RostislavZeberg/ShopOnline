@@ -1,3 +1,4 @@
+// src\utils\getCityFromCoordinates.ts
 // Функция получения города по координатам
 export const getCityFromCoordinates = async (lat: number, lon: number, defaultCity: string) => {
   try {

@@ -1,3 +1,4 @@
+// src\store\slices\currencySlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Currency = {

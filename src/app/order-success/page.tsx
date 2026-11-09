@@ -1,3 +1,4 @@
+// src\app\order-success\page.tsx
 import { OrderSuccess } from "@/components/OrderSuccess/OrderSuccess";
 
 export default function OrderSuccessPage() {

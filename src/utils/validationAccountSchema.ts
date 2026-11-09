@@ -1,3 +1,4 @@
+// src\utils\validationAccountSchema.ts
 import { z } from 'zod';
 
 // Схема для имени и фамилии (не пустые строки)

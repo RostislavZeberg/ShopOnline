@@ -1,13 +1,9 @@
+// src\styles\_mixins.scss
 @mixin absoluteCenter {
   position: absolute;
-  margin-top: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  margin-left: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @mixin absoluteCenterHorizontal {

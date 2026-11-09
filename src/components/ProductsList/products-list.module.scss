@@ -1,9 +1,22 @@
+  // src\components\ProductsList\products-list.module.scss
   .products-list {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 45px;
     padding-top: 140px;
     padding-bottom: 30px;
     justify-content: space-between;
     width: 100%;
+  }
+
+  @media (max-width: 1710px) {
+    .products-list {
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 950px) {
+    .products-list {
+      gap: 20px;
+    }
   }

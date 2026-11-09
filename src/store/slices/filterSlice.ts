@@ -1,3 +1,4 @@
+// src\store\slices\filterSlice.ts
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { FilterState, PriceRange } from '@/types/filterTypes';

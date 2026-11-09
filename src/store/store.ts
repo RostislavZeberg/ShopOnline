@@ -1,3 +1,4 @@
+// src\store\store.ts
 import { configureStore, combineSlices } from '@reduxjs/toolkit';
 import burgerSlice from './slices/burgerSlice';
 import logInSlice from './slices/logInSlice';

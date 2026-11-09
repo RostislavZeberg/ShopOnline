@@ -1,3 +1,4 @@
+// src\app\cart\page.tsx
 import Cart from '@/components/Cart/Cart'
 import { Metadata } from 'next'
 

@@ -1,3 +1,4 @@
+// src\hooks\useCurrencySelect .ts
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setCurrency } from "@/store/slices/currencySlice";
 import { currencies } from "@/constants/currencies";

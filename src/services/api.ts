@@ -1,11 +1,9 @@
+// src\services\api.ts
 import axios from 'axios'
 
 import { IProductTotal } from '@/types/productsTypes';
 
-const API_URL = 'https://vue-study.skillbox.cc'
-
 const api = axios.create({
-  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

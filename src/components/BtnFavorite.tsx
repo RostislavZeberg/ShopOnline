@@ -1,3 +1,4 @@
+// src\components\BtnFavorite.tsx
 "use client"
 import { useSelector } from "react-redux";
 import { useCallback, type FC } from "react";

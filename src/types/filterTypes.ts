@@ -1,3 +1,4 @@
+// src\types\filterTypes.ts
 export interface PriceRange {
   min: number;
   max: number;

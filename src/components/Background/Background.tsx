@@ -1,3 +1,4 @@
+// src\components\Background\Background.tsx
 "use client"
 import { RootState } from "@/store/store";
 import { useEffect } from "react";

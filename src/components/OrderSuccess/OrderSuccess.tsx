@@ -1,3 +1,4 @@
+// src\components\OrderSuccess\OrderSuccess.tsx
 'use client';
 import Link from 'next/link';
 import styles from './order-success.module.scss';

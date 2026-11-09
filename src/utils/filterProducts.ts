@@ -1,3 +1,4 @@
+// src\utils\filterProducts.ts
 import { FilterState } from "@/types/filterTypes";
 import { IProductTotal } from "@/types/productsTypes";
 

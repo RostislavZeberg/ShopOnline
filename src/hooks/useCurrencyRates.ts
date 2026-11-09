@@ -1,3 +1,4 @@
+// src\hooks\useCurrencyRates.ts
 import { useState, useEffect } from 'react';
 
 type CurrencyRate = {

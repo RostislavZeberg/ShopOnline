@@ -1,3 +1,4 @@
+// src\components\Product\Product.tsx
 'use client';
 import Link from "next/link";
 import { useCallback, type FC } from "react";

@@ -1,3 +1,4 @@
+// src\constants\filterConstants.ts
 import { FilterState } from "@/types/filterTypes";
 
 export const initialFilterState: FilterState = {

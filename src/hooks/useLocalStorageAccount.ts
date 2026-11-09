@@ -1,3 +1,4 @@
+// src\hooks\useLocalStorageAccount.ts
 import { useState } from 'react';
 
 export const useLocalStorageAccount = <T>(key: string, initialValue: T) => {

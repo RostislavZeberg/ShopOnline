@@ -1,3 +1,4 @@
+// src\app\category\[categoryTitle]\page.tsx
 "use client";
 import { useLoadShopData } from "@/hooks/useLoadShopData";
 import { useAppSelector } from "@/store/hooks";

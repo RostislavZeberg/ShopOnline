@@ -1,3 +1,4 @@
+// src\modal\SearchProductDetailed\SearchProductDetailed.tsx
 "use client"
 import { useState, FormEvent, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';

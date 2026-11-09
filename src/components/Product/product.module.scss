@@ -1,7 +1,8 @@
+// src\components\Product\product.module.scss
 .item {
   position: relative;
-  width: 100%;
-  // aspect-ratio: 1/1.5;
+  width: calc((100% - 45px * 4) / 5);
+  height: auto;
   border-radius: 20px;
   background-color: #fff;
 
@@ -23,6 +24,7 @@
     justify-content: center;
     align-items: center;
     height: 270px;
+    aspect-ratio: 336/270;
     max-height: 70%;
     object-fit: contain;
     overflow: hidden;
@@ -48,5 +50,29 @@
     gap: 10px;
     padding-right: 10px;
     padding-left: 10px;
+  }
+}
+
+@media (max-width: 1710px) {
+  .item {
+    width: calc((100% - 30px * 3) / 4);
+  }
+}
+
+@media (max-width: 1300px) {
+  .item {
+    width: calc((100% - 30px * 2) / 3);
+  }
+}
+
+@media (max-width: 950px) {
+  .item {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .item {
+    width: 100%;
   }
 }

@@ -1,3 +1,4 @@
+// src\hooks\useLoadShopData.ts
 import { useEffect } from 'react';
 
 import { useAppDispatch } from '../store/hooks';

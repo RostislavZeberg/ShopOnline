@@ -1,3 +1,4 @@
+// src\app\product\[id]\page.tsx
 "use client";
 import { notFound } from 'next/navigation';
 import { use, useEffect, useState } from 'react';
