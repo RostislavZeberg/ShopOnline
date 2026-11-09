@@ -1,2 +1,0 @@
-export { SearchProductDetailed } from "./SearchProductDetailed"
-
