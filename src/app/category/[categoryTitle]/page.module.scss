@@ -1,15 +1,19 @@
 // src\app\category\[categoryTitle]\page.module.scss
 .category {
-  padding: 140px 0;
+  margin: 0 auto;
+  padding-top: 140px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1920px;
+  width: 100%;
 }
 
 .products-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 45px;
+  justify-content: center;
   padding-bottom: 30px;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .backButton {
@@ -28,3 +32,19 @@
   font-weight: 600;
   color: #333;
 }
+
+  @media (max-width: 950px) {
+    .category {
+      padding-top: 195px;
+    }
+
+    .products-list {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .category {
+      padding-top: 175px;
+    }
+  }

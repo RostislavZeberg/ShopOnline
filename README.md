@@ -2,6 +2,10 @@
 
 Проект интернет-магазина с современным стеком технологий, построенный на Next.js 15 с использованием TypeScript, Redux Toolkit и SCSS.
 
+## Демонстрация проекта
+
+https://next-shop-online.vercel.app/
+
 ## 🛠 Технологии
 
 - **Next.js 15** - React-фреймворк с App Router

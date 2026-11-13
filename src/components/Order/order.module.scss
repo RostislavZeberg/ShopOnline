@@ -1,5 +1,5 @@
 // src\components\Order\order.module.scss
-.cart {
+.order {
   padding-top: 140px;
 
   .title {
@@ -244,5 +244,17 @@
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+@media (max-width: 950px) {
+  .order {
+    padding-top: 195px;
+  }
+}
+
+@media (max-width: 650px) {
+  .order {
+    padding-top: 175px;
   }
 }

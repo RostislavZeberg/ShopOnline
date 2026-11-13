@@ -1,0 +1,54 @@
+  // src\components\FavoritesList\favorites__list.module.scss
+  .favorites {
+    margin: 0 auto;
+    padding-top: 140px;
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: 1920px;
+    width: 100%;
+  }
+
+  .title {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .products-list {
+    margin: 0 auto;
+    max-width: 1920px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 30px;
+  }
+
+  .btn-favorite {
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  @media (max-width: 1710px) {
+    .products-list {
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 950px) {
+    .favorites {
+      padding-top: 195px;
+    }
+
+    .products-list {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .favorites {
+      padding-top: 175px;
+    }
+  }

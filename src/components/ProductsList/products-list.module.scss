@@ -17,6 +17,13 @@
 
   @media (max-width: 950px) {
     .products-list {
+      padding-top: 195px;
       gap: 20px;
+    }
+  }
+
+    @media (max-width: 350px) {
+    .products-list {
+      padding-top: 245px;
     }
   }

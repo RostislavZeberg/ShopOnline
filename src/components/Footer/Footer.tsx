@@ -1,128 +1,137 @@
 // src\components\Footer\Footer.tsx
-import styles from './footer.module.scss'
-import Link from 'next/link'
+"use client"; // Обязательно, так как используем useState
+
+import { useState } from "react";
+import styles from "./footer.module.scss";
+import Link from "next/link";
 
 export const Footer = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleMenu = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const menuItems = [
+    {
+      title: "Покупателям",
+      links: [
+        "Частые вопросы",
+        "Покупать как бизнес",
+        "Юридическая информация",
+        "Доставка по клику из пункта выдачи",
+      ],
+    },
+    {
+      title: "Продавцам и партнёрам",
+      links: [
+        "Продавать товары",
+        "Открыть пункт выдачи",
+        "Предложить помещение",
+        "Развозить грузы",
+        "Доставлять заказы",
+      ],
+    },
+    {
+      title: "Наши проекты",
+      links: ["SO Guru", "SO Stream", "SO Track"],
+    },
+    {
+      title: "Компания",
+      links: [
+        "О нас",
+        "Пресс‑служба",
+        "Контакты",
+        "Вакансии",
+        "Сообщить о мошенничестве",
+        "Социальные сети",
+      ],
+    },
+  ];
+
   return (
     <footer className={styles.footer}>
       <div className="container">
-        <ul className={`${styles['footer__top']} list-reset`}>
-          <li className={styles['footer__top-item']}>
-            <ul className={`${styles['footer__top-item--info']} list-reset`}>
-              <h2 className={styles['footer__top-item--title']}>
-                Покупателям
+        <ul className={`${styles["footer__top"]} list-reset`}>
+          {menuItems.map((item, index) => (
+            <li
+              key={index}
+              className={`${styles["footer__top-item"]} ${
+                openIndex === index ? styles["footer__top-item--active"] : ""
+              }`}
+            >
+              <h2
+                className={styles["footer__top-item--title"]}
+                onClick={() => toggleMenu(index)}
+              >
+                {item.title}
+                {/* Стрелка */}
+                <span className={styles["footer__top-item--arrow"]}>
+                  <svg
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1.5L6 6.5L11 1.5"
+                      stroke="#242424"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </h2>
-              <li className={styles['footer__top-item--descr']}>
-                Частые вопросы
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Покупать как бизнес
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Юридическая информация
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Доставка по клику из пункта выдачи
-              </li>
-            </ul>
-          </li>
-          <li className={styles['footer__top-item']}>
-            <ul className={`${styles['footer__top-item--info']} list-reset`}>
-              <h2 className={styles['footer__top-item--title']}>
-                Продавцам и партнёрам
-              </h2>
-              <li className={styles['footer__top-item--descr']}>
-                Продавать товары
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Открыть пункт выдачи
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Предложить помещение
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Развозить грузы
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Доставлять заказы
-              </li>
-            </ul>
-          </li>
-          <li className={styles['footer__top-item']}>
-            <ul className={`${styles['footer__top-item--info']} list-reset`}>
-              <h2 className={styles['footer__top-item--title']}>
-                Наши проекты
-              </h2>
-              <li className={styles['footer__top-item--descr']}>
-                SO Guru
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                SO Stream
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                SO Track
-              </li>
-              <li className={styles['footer__top-item--descr']}>
 
-              </li>
-            </ul>
-          </li>
-          <li className={styles['footer__top-item']}>
-            <ul className={`${styles['footer__top-item--info']} list-reset`}>
-              <h2 className={styles['footer__top-item--title']}>
-                Компания
-              </h2>
-              <li className={styles['footer__top-item--descr']}>
-                О нас
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Пресс‑служба
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Контакты
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Вакансии
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Сообщить о мошенничестве
-              </li>
-              <li className={styles['footer__top-item--descr']}>
-                Социальные сети
-              </li>
-            </ul>
-          </li>
+              <ul className={`${styles["footer__top-item--info"]} list-reset`}>
+                {item.links.map((link, linkIndex) => (
+                  <li
+                    key={linkIndex}
+                    className={styles["footer__top-item--descr"]}
+                  >
+                    {link}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
         </ul>
-        <div className={styles['footer__bottom']}>
-          <p className={styles['footer__bottom-span']}>
+
+        <div className={styles["footer__bottom"]}>
+          <p className={styles["footer__bottom-span"]}>
             <span>© ShopOnline 2004–2025.&nbsp;</span>
             <span>Все права защищены.</span>
           </p>
           <div className={styles.footer__social}>
-            <div className={styles['footer__social-icon']}>
+            <div className={styles["footer__social-icon"]}>
               <Link
-                href={'https://github.com/RostislavZeberg?tab=repositories'}
-                target="_blank" rel="noopener noreferrer"
-                className={styles['footer__social-icon--vk']}>
-              </Link>
+                href={"https://github.com/RostislavZeberg?tab=repositories"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles["footer__social-icon--vk"]}
+              ></Link>
             </div>
-            <div className={styles['footer__social-icon']}>
+            <div className={styles["footer__social-icon"]}>
               <Link
-                href={'https://github.com/RostislavZeberg?tab=repositories'}
-                target="_blank" rel="noopener noreferrer"
-                className={styles['footer__social-icon--ok']}>
-              </Link>
+                href={"https://github.com/RostislavZeberg?tab=repositories"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles["footer__social-icon--ok"]}
+              ></Link>
             </div>
-            <div className={styles['footer__social-icon']}>
+            <div className={styles["footer__social-icon"]}>
               <Link
-                href={'https://github.com/RostislavZeberg?tab=repositories'}
-                target="_blank" rel="noopener noreferrer"
-                className={styles['footer__social-icon--tg']}>
-              </Link>
+                href={"https://github.com/RostislavZeberg?tab=repositories"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles["footer__social-icon--tg"]}
+              ></Link>
             </div>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};

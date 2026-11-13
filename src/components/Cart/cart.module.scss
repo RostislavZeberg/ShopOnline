@@ -89,6 +89,8 @@
 .image {
   border-radius: 6px;
   object-fit: contain;
+  width: 120px;
+  height: 120px;
 }
 
 .itemInfo {
@@ -262,5 +264,23 @@
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+@media (max-width: 950px) {
+  .cart {
+    padding-top: 195px;
+  }
+}
+
+@media (max-width: 550px) {
+  .item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .itemControls {
+    flex-direction: row;
+    align-items: center;
   }
 }

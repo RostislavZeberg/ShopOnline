@@ -300,3 +300,19 @@
   flex-shrink: 0;
   margin-left: 1rem;
 }
+
+@media (max-width: 950px) {
+  .orders {
+    padding-top: 195px;
+  }
+
+  .products-list {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .orders {
+    padding-top: 175px;
+  }
+}

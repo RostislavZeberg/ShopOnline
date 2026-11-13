@@ -91,7 +91,6 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               className="w-full h-auto object-contain"
               priority
               quality={85}
-              // Добавляем placeholder для плавной загрузки
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
             />

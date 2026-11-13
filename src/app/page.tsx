@@ -1,15 +1,11 @@
 // src\app\page.tsx
-import { Background } from "@/components/Background/Background";
 import { ProductsList } from "@/components/ProductsList/ProductsList";
-import { AuthForm } from "@/modal/AuthForm/AuthForm";
 
 export default function Home() {
 
   return (
     <main className="container">
       <ProductsList />
-      <AuthForm />
-      <Background />
     </main>
   );
 }

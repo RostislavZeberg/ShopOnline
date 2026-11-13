@@ -1,56 +1,49 @@
 // src\components\Header\SearchProduct.tsx
-"use client"
-import { useState, useCallback, useEffect, useRef } from 'react'
-import { useDebounce } from '@/hooks/useDebounce'
-import styles from './header.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { setFilters } from '@/store/slices/filterSlice'
-import { applyFilters } from '@/store/slices/productsSlice'
-import { RootState } from '@/store/store'
+"use client";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
+import styles from "./header.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters } from "@/store/slices/filterSlice";
+import { applyFilters } from "@/store/slices/productsSlice";
+import { RootState } from "@/store/store";
 
 export const SearchProduct = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const debouncedSearchQuery = useDebounce(searchQuery, 300)
-  const dispatch = useDispatch()
-  
-  // Получаем текущие фильтры из хранилища
-  const filters = useSelector((state: RootState) => state.filterSlice)
-  
-  // Создаем ref для хранения актуальных фильтров
-  const latestFilters = useRef(filters)
-  
-  // Обновляем ref при изменении фильтров
-  useEffect(() => {
-    latestFilters.current = filters
-  }, [filters])
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+  const dispatch = useDispatch();
+  const filters = useSelector((state: RootState) => state.filterSlice);
+  const latestFilters = useRef(filters);
 
   useEffect(() => {
-    // Используем актуальное значение фильтров из ref
-    const newFilters = { 
-      ...latestFilters.current, 
-      title: debouncedSearchQuery 
-    }
-    
-    dispatch(setFilters(newFilters))
-    dispatch(applyFilters(newFilters))
-  }, [debouncedSearchQuery, dispatch]) // Убрали filters из зависимостей
-  
+    latestFilters.current = filters;
+  }, [filters]);
+
+  useEffect(() => {
+    const newFilters = {
+      ...latestFilters.current,
+      title: debouncedSearchQuery,
+    };
+
+    dispatch(setFilters(newFilters));
+    dispatch(applyFilters(newFilters));
+  }, [debouncedSearchQuery, dispatch]);
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value)
-  }
+    setSearchQuery(e.target.value);
+  };
 
   const handleClear = useCallback(() => {
-    setSearchQuery('')
-    
-    // Используем ref для получения актуальных фильтров
-    const newFilters = { 
-      ...latestFilters.current, 
-      title: '' 
-    }
-    
-    dispatch(setFilters(newFilters))
-    dispatch(applyFilters(newFilters))
-  }, [dispatch]) // Убрали filters из зависимостей
+    setSearchQuery("");
+
+    const newFilters = {
+      ...latestFilters.current,
+      title: "",
+    };
+
+    dispatch(setFilters(newFilters));
+    dispatch(applyFilters(newFilters));
+  }, [dispatch]);
 
   return (
     <div className={styles.search} role="search">
@@ -81,11 +74,10 @@ export const SearchProduct = () => {
       {searchQuery && (
         <button
           onClick={handleClear}
-          className={`btn-closed btn-reset ${styles['btn-closed--search']}`}
+          className={`btn-closed btn-reset ${styles["btn-closed--search"]}`}
           aria-label="Очистить поиск"
-        >
-        </button>
+        ></button>
       )}
     </div>
-  )
-}
+  );
+};

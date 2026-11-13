@@ -1,12 +1,12 @@
 // src\components\FavoritesList\FavoritesList.tsx
-"use client"
+"use client";
 import { useAppSelector } from "@/store/hooks";
 import { Loader } from "@/components/Loader/Loader";
 import { ErrorMessage } from "@/components/ErrorMessage";
 import { Product } from "@/components/Product/Product";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useLoadShopData } from "@/hooks/useLoadShopData";
-import styles from "./favorites__list.module.scss"
+import styles from "./favorites-list.module.scss";
 import Link from "next/link";
 
 export const FavoritesList = () => {
@@ -16,16 +16,19 @@ export const FavoritesList = () => {
   const {
     filteredItems: products,
     loading: productsLoading,
-    error: productsError
+    error: productsError,
   } = useAppSelector((state) => state.productsSlice);
 
-  const favoriteIds = useAppSelector((state) => state.favoriteSlice.favoriteIds);
-  const productsFavorites = products.filter(product => favoriteIds.includes(product.id))
+  const favoriteIds = useAppSelector(
+    (state) => state.favoriteSlice.favoriteIds,
+  );
+  const productsFavorites = products.filter((product) =>
+    favoriteIds.includes(product.id),
+  );
 
-  const {
-    loading: categoriesLoading,
-    error: categoriesError
-  } = useAppSelector((state) => state.categoriesSlice);
+  const { loading: categoriesLoading, error: categoriesError } = useAppSelector(
+    (state) => state.categoriesSlice,
+  );
 
   const isLoading = productsLoading || categoriesLoading;
   const error = productsError || categoriesError;
@@ -34,8 +37,11 @@ export const FavoritesList = () => {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <>
-      <ul className={`${styles['products-list']} list-reset`}>
+    <div className={styles.favorites}>
+      <h1 className={styles.title}>
+        Избранные товары
+      </h1>
+      <ul className={`${styles["products-list"]} list-reset`}>
         {productsFavorites.map((product, index) => (
           <Product
             key={product.id}
@@ -45,7 +51,9 @@ export const FavoritesList = () => {
           />
         ))}
       </ul>
-      <Link href={'/'} className={`${styles['btn-favorite']} btn btn-reset`}>← Продолжить покупки</Link>
-    </>
-  )
-}
+      <Link href={"/"} className={`${styles["btn-favorite"]} btn btn-reset`}>
+        ← Продолжить покупки
+      </Link>
+    </div>
+  );
+};

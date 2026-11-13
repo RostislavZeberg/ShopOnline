@@ -1,57 +1,77 @@
-// src\components\Header\HeaderNav.tsx
-"use client"
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
+// src/components/Header/HeaderNav.tsx
+"use client";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
-import type { RootState } from '../../store/store';
-import { toggleBackground } from '../../store/slices/backgroundSlice';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { toggleAuthForm } from '@/store/slices/authFormSlice';
-import styles from './header.module.scss';
+import type { RootState } from "../../store/store";
+import { toggleBackground } from "../../store/slices/backgroundSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { toggleAuthForm } from "@/store/slices/authFormSlice";
+import styles from "./header.module.scss";
 
-export const HeaderNav = () => {
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export const HeaderNav = ({ isOpen, onClose }: Props) => {
   const dispatch = useAppDispatch();
-  const isEnterLogIn = useSelector((state: RootState) => state.logInSlice.isEnterLogIn);
+  const isEnterLogIn = useSelector(
+    (state: RootState) => state.logInSlice.isEnterLogIn,
+  );
   const cartItems = useAppSelector((state) => state.cartSlice.cartItems || {});
 
   const toggleRegister = () => {
     dispatch(toggleAuthForm());
     dispatch(toggleBackground());
-  }
+    onClose();
+  };
 
   return (
-    <nav className={styles.nav}>
-      {isEnterLogIn &&
+    <nav className={`${styles.nav} ${isOpen ? styles["nav--open"] : ""}`}>
+      {isEnterLogIn && (
         <>
-          <Link href="/favorites" className={styles.link}>
-            <span className={`${styles.link__icon} ${styles['link__icon--favorites']}`}></span>
+          <Link href="/favorites" className={styles.link} onClick={onClose}>
+            <span
+              className={`${styles.link__icon} ${styles["link__icon--favorites"]}`}
+            ></span>
             Избранные
           </Link>
-          <Link href="/orders" className={styles.link}>
-            <span className={`${styles.link__icon} ${styles['link__icon--orders']}`}></span>
+          <Link href="/orders" className={styles.link} onClick={onClose}>
+            <span
+              className={`${styles.link__icon} ${styles["link__icon--orders"]}`}
+            ></span>
             Заказы
           </Link>
         </>
-      }
-      {!isEnterLogIn ?
+      )}
+      {!isEnterLogIn ? (
         <button onClick={toggleRegister} className={`${styles.link} btn-reset`}>
-          <span className={`${styles.link__icon} ${styles['link__icon--log-in']}`}></span>
+          <span
+            className={`${styles.link__icon} ${styles["link__icon--log-in"]}`}
+          ></span>
           Войти
         </button>
-        :
-        <Link href="/profile" className={styles.link}>
-          <span className={`${styles.link__icon} ${styles['link__icon--log-in']}`}></span>
+      ) : (
+        <Link href="/profile" className={styles.link} onClick={onClose}>
+          <span
+            className={`${styles.link__icon} ${styles["link__icon--log-in"]}`}
+          ></span>
           Профиль
         </Link>
-      }
-      <Link href="/cart" className={styles.link}>
-        <span className={`${styles.link__icon} ${styles['link__icon--basket']}`}>
-          {Object.keys(cartItems).length !== 0 &&
-            <span className={styles['count-products']}>{Object.keys(cartItems).length}</span>
-          }
+      )}
+      <Link href="/cart" className={styles.link} onClick={onClose}>
+        <span
+          className={`${styles.link__icon} ${styles["link__icon--basket"]}`}
+        >
+          {Object.keys(cartItems).length !== 0 && (
+            <span className={styles["count-products"]}>
+              {Object.keys(cartItems).length}
+            </span>
+          )}
         </span>
         Корзина
       </Link>
     </nav>
-  )
-}
+  );
+};

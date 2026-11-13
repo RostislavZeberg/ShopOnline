@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggleEnterLogIn } from "@/store/slices/logInSlice";
@@ -10,34 +11,7 @@ import { DeliveryAddresses } from "./DeliveryAddresses";
 import { OrderHistory } from "./OrderHistory";
 import { PaymentMethods } from "./PaymentMethods";
 import { UserPreferences } from "./UserPreferences";
-
-interface UserData {
-  email: string;
-  password: string;
-  name?: string;
-  phone?: string;
-  avatar?: string;
-}
-
-interface Address {
-  id: string;
-  title: string;
-  fullName: string;
-  phone: string;
-  address: string;
-  apartment?: string;
-  city: string;
-  postalCode: string;
-  isDefault: boolean;
-}
-
-interface PaymentCard {
-  id: string;
-  lastFourDigits: string;
-  brand: string;
-  expiryDate: string;
-  isDefault: boolean;
-}
+import { Address, PaymentCard, UserData } from "@/types/profileTypes";
 
 export const Profile = () => {
   const router = useRouter();
@@ -52,10 +26,10 @@ export const Profile = () => {
     name: "",
     phone: "",
     newPassword: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const [message, setMessage] = useState("");
-  
+
   // Состояния для новых функций
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [paymentCards, setPaymentCards] = useState<PaymentCard[]>([]);
@@ -67,7 +41,7 @@ export const Profile = () => {
       const storedData = localStorage.getItem("userData");
       const storedAddresses = localStorage.getItem("userAddresses");
       const storedCards = localStorage.getItem("userPaymentCards");
-      
+
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         setUserData(parsedData);
@@ -77,18 +51,18 @@ export const Profile = () => {
           name: parsedData.name || "",
           phone: parsedData.phone || "",
           newPassword: "",
-          confirmPassword: ""
+          confirmPassword: "",
         });
       }
-      
+
       if (storedAddresses) {
         setAddresses(JSON.parse(storedAddresses));
       }
-      
+
       if (storedCards) {
         setPaymentCards(JSON.parse(storedCards));
       }
-      
+
       setIsLoading(false);
     }
   }, []);
@@ -102,9 +76,9 @@ export const Profile = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -112,7 +86,10 @@ export const Profile = () => {
     e.preventDefault();
 
     // Проверка на совпадение нового пароля и подтверждения
-    if (formData.newPassword && formData.newPassword !== formData.confirmPassword) {
+    if (
+      formData.newPassword &&
+      formData.newPassword !== formData.confirmPassword
+    ) {
       setMessage("Новый пароль и подтверждение не совпадают");
       return;
     }
@@ -129,7 +106,7 @@ export const Profile = () => {
       email: formData.email,
       name: formData.name,
       phone: formData.phone,
-      password: formData.newPassword || formData.password
+      password: formData.newPassword || formData.password,
     };
 
     localStorage.setItem("userData", JSON.stringify(updatedUserData));
@@ -147,7 +124,11 @@ export const Profile = () => {
   };
 
   const handleDeleteAccount = () => {
-    if (window.confirm("Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.")) {
+    if (
+      window.confirm(
+        "Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.",
+      )
+    ) {
       localStorage.removeItem("userData");
       localStorage.removeItem("userAddresses");
       localStorage.removeItem("userPaymentCards");
@@ -156,10 +137,10 @@ export const Profile = () => {
     }
   };
 
-  const addAddress = (address: Omit<Address, 'id'>) => {
+  const addAddress = (address: Omit<Address, "id">) => {
     const newAddress = {
       ...address,
-      id: Date.now().toString()
+      id: Date.now().toString(),
     };
     const updatedAddresses = [...addresses, newAddress];
     setAddresses(updatedAddresses);
@@ -167,23 +148,23 @@ export const Profile = () => {
   };
 
   const updateAddress = (id: string, updatedAddress: Partial<Address>) => {
-    const updatedAddresses = addresses.map(addr =>
-      addr.id === id ? { ...addr, ...updatedAddress } : addr
+    const updatedAddresses = addresses.map((addr) =>
+      addr.id === id ? { ...addr, ...updatedAddress } : addr,
     );
     setAddresses(updatedAddresses);
     localStorage.setItem("userAddresses", JSON.stringify(updatedAddresses));
   };
 
   const deleteAddress = (id: string) => {
-    const updatedAddresses = addresses.filter(addr => addr.id !== id);
+    const updatedAddresses = addresses.filter((addr) => addr.id !== id);
     setAddresses(updatedAddresses);
     localStorage.setItem("userAddresses", JSON.stringify(updatedAddresses));
   };
 
-  const addPaymentCard = (card: Omit<PaymentCard, 'id'>) => {
+  const addPaymentCard = (card: Omit<PaymentCard, "id">) => {
     const newCard = {
       ...card,
-      id: Date.now().toString()
+      id: Date.now().toString(),
     };
     const updatedCards = [...paymentCards, newCard];
     setPaymentCards(updatedCards);
@@ -191,15 +172,15 @@ export const Profile = () => {
   };
 
   const deletePaymentCard = (id: string) => {
-    const updatedCards = paymentCards.filter(card => card.id !== id);
+    const updatedCards = paymentCards.filter((card) => card.id !== id);
     setPaymentCards(updatedCards);
     localStorage.setItem("userPaymentCards", JSON.stringify(updatedCards));
   };
 
   const setDefaultCard = (id: string) => {
-    const updatedCards = paymentCards.map(card => ({
+    const updatedCards = paymentCards.map((card) => ({
       ...card,
-      isDefault: card.id === id
+      isDefault: card.id === id,
     }));
     setPaymentCards(updatedCards);
     localStorage.setItem("userPaymentCards", JSON.stringify(updatedCards));
@@ -221,10 +202,18 @@ export const Profile = () => {
             <div className={styles.profileHeader}>
               <div className={styles.avatar}>
                 {userData?.avatar ? (
-                  <img src={userData.avatar} alt="Avatar" />
+                  <Image
+                    src={userData.avatar}
+                    alt="Avatar"
+                    width={80}
+                    height={80}
+                    className={styles.avatarImage}
+                    style={{ width: "100%", height: "auto" }} 
+                  />
                 ) : (
                   <div className={styles.avatarPlaceholder}>
-                    {userData?.name?.charAt(0) || userData?.email?.charAt(0).toUpperCase()}
+                    {userData?.name?.charAt(0) ||
+                      userData?.email?.charAt(0).toUpperCase()}
                   </div>
                 )}
               </div>
@@ -233,7 +222,7 @@ export const Profile = () => {
                 <p className={styles.email}>{userData?.email}</p>
               </div>
             </div>
-            
+
             <div className={styles.profileDetails}>
               <div className={styles.detailItem}>
                 <span className={styles.detailLabel}>Имя:</span>
@@ -248,7 +237,7 @@ export const Profile = () => {
                 <span>{userData?.phone || "Не указан"}</span>
               </div>
             </div>
-            
+
             <div className={styles.actions}>
               <button
                 onClick={() => setIsEditing(true)}
@@ -295,7 +284,9 @@ export const Profile = () => {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="password">Текущий пароль (требуется для изменений):</label>
+              <label htmlFor="password">
+                Текущий пароль (требуется для изменений):
+              </label>
               <input
                 type="password"
                 id="password"
@@ -317,7 +308,9 @@ export const Profile = () => {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="confirmPassword">Подтверждение нового пароля:</label>
+              <label htmlFor="confirmPassword">
+                Подтверждение нового пароля:
+              </label>
               <input
                 type="password"
                 id="confirmPassword"
@@ -344,7 +337,7 @@ export const Profile = () => {
             </div>
           </form>
         );
-        
+
       case "addresses":
         return (
           <DeliveryAddresses
@@ -354,7 +347,7 @@ export const Profile = () => {
             onDeleteAddress={deleteAddress}
           />
         );
-        
+
       case "payments":
         return (
           <PaymentMethods
@@ -364,13 +357,13 @@ export const Profile = () => {
             onSetDefaultCard={setDefaultCard}
           />
         );
-        
+
       case "orders":
         return <OrderHistory />;
-        
+
       case "preferences":
         return <UserPreferences />;
-        
+
       default:
         return null;
     }
@@ -393,7 +386,7 @@ export const Profile = () => {
                 <span className={styles.navIcon}>👤</span>
                 Личные данные
               </button>
-              
+
               <button
                 className={`${styles.navButton} ${activeTab === "addresses" ? styles.active : ""}`}
                 onClick={() => setActiveTab("addresses")}
@@ -401,7 +394,7 @@ export const Profile = () => {
                 <span className={styles.navIcon}>📍</span>
                 Адреса доставки
               </button>
-              
+
               <button
                 className={`${styles.navButton} ${activeTab === "payments" ? styles.active : ""}`}
                 onClick={() => setActiveTab("payments")}
@@ -409,7 +402,7 @@ export const Profile = () => {
                 <span className={styles.navIcon}>💳</span>
                 Способы оплаты
               </button>
-              
+
               <button
                 className={`${styles.navButton} ${activeTab === "orders" ? styles.active : ""}`}
                 onClick={() => setActiveTab("orders")}
@@ -417,7 +410,7 @@ export const Profile = () => {
                 <span className={styles.navIcon}>📦</span>
                 История заказов
               </button>
-              
+
               <button
                 className={`${styles.navButton} ${activeTab === "preferences" ? styles.active : ""}`}
                 onClick={() => setActiveTab("preferences")}
@@ -425,9 +418,9 @@ export const Profile = () => {
                 <span className={styles.navIcon}>⚙️</span>
                 Настройки
               </button>
-              
+
               <div className={styles.navDivider}></div>
-              
+
               <button
                 className={`${styles.navButton} ${styles.logoutButton}`}
                 onClick={handleLogout}
@@ -435,7 +428,7 @@ export const Profile = () => {
                 <span className={styles.navIcon}>🚪</span>
                 Выйти
               </button>
-              
+
               <button
                 className={`${styles.navButton} ${styles.deleteButton}`}
                 onClick={handleDeleteAccount}
@@ -445,12 +438,10 @@ export const Profile = () => {
               </button>
             </nav>
           </div>
-          
-          <div className={styles.content}>
-            {renderContent()}
-          </div>
+
+          <div className={styles.content}>{renderContent()}</div>
         </div>
       </div>
     </div>
   );
-}
+};

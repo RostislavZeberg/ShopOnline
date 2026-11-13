@@ -80,7 +80,6 @@ export default function Order() {
     }
   }, [cartItems, allProducts]);
 
-  // Обработка изменений в форме
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -89,23 +88,19 @@ export default function Order() {
     }));
   };
 
-  // Вычисление общей стоимости
   const calculateTotal = () => {
     return products.reduce((total, item) => {
       return total + (item.product.price * item.quantity);
     }, 0);
   };
 
-  // Оформление заказа
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      // Создаем информацию о заказе
       const orderDate = new Date().toISOString();
       const orderId = `order-${Date.now()}`;
 
-      // Сохраняем каждый товар как отдельный заказ
       products.forEach(({ product, quantity }) => {
         const orderItem = {
           product,
@@ -118,13 +113,10 @@ export default function Order() {
         dispatch(addOrder(orderItem));
       });
 
-      // Имитация отправки заказа
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // Очищаем корзину
       dispatch(clearCart());
 
-      // Перенаправляем
       router.push('/order-success');
     } catch (error) {
       console.error('Error submitting order:', error);
@@ -147,7 +139,7 @@ export default function Order() {
   }
 
   return (
-    <div className={`${styles.cart} container`}>
+    <div className={`${styles.order} container`}>
       <h1 className={styles.title}>Оформление заказа</h1>
 
       <div className={styles.content}>

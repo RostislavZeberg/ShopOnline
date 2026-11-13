@@ -1,20 +1,26 @@
-// src\components\Header\BtnBurger.tsx
-"use client"
-import { useDispatch, useSelector } from 'react-redux';
+// src/components/Header/BtnBurger.tsx
+import React from 'react';
+import styles from './header.module.scss';
 
-import { toggleBurger } from '../../store/slices/burgerSlice';
-import type { RootState } from '../../store/store';
+type Props = {
+  isOpen: boolean;
+  onClick: () => void;
+};
 
-export const BtnBurger = () => {
-  const dispatch = useDispatch();
-  const isOpenSearchDetailed = useSelector((state: RootState) => state.burgerSlice.isOpenSearchDetailed);
-
+export const BtnBurger: React.FC<Props> = ({ isOpen, onClick }) => {
   return (
-    <button 
-      className={`header__burger burger btn-reset ${isOpenSearchDetailed ? 'burger--close' : ''}`}
-      onClick={() => dispatch(toggleBurger())}
+    <button
+      type="button"
+      className={styles.burger}
+      onClick={onClick}
+      aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+      aria-expanded={isOpen}
+      aria-controls="header-nav"
+      data-active={isOpen}
     >
-      <span className={`burger__line ${isOpenSearchDetailed ? 'burger__line--close' : ''}`}></span>
+      <span className={styles.burger__line} />
+      <span className={styles.burger__line} />
+      <span className={styles.burger__line} />
     </button>
   );
 };
